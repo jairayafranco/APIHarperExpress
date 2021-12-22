@@ -1,33 +1,25 @@
 const cursoController = require('../controller/cursoController')
 const mainController = require('../controller/mainController')
 const notasController = require('../controller/notasController')
+const router = require('express').Router()
 
-module.exports = function(app){
-  //Ruta principal
-  app.route('/').get(mainController.principal)
-  app.route('/guiacursos').get(mainController.guiaCursos)
-  app.route('/guianotas').get(mainController.guiaNotas)
+//Ruta principal
+router.get('/', mainController.principal)
+      .get('/guiacursos', mainController.guiaCursos)
+      .get('/guianotas', mainController.guiaNotas)
 
-  //Rutas cursos
-  app.route('/cursos').get(cursoController.getCursos)
+//Rutas cursos
+router.get('/cursos', cursoController.getCursos)
+      .get('/cursos/:identificador', cursoController.getCurso)
+      .post('/cursos/', cursoController.addCurso)
+      .put('/cursos/:id', cursoController.editCurso)
+      .delete('/cursos/:id', cursoController.deleteCurso)
 
-  app.route('/cursos/:identificador').get(cursoController.getCurso)
+//Rutas notas
+router.get('/notas', notasController.getNotas)
+      .get('/notas/:idNota', notasController.getNota)
+      .post('/notas', notasController.addNota)
+      .put('/notas/:id', notasController.editNota)
+      .delete('/notas/:id', notasController.deleteNota)
 
-  app.route('/cursos').post(cursoController.addCurso)
-
-  app.route('/cursos/:id').put(cursoController.editCurso)
-
-  app.route('/cursos/:id').delete(cursoController.deleteCurso)
-
-  //Rutas notas
-  app.route('/notas').get(notasController.getNotas)
-
-  app.route('/notas/:idNota').get(notasController.getNota)
-
-  app.route('/notas').post(notasController.addNota)
-
-  app.route('/notas/:id').put(notasController.editNota)
-
-  app.route('/notas/:id').delete(notasController.deleteNota)
-
-}
+module.exports = router
