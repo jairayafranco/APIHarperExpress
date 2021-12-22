@@ -19,11 +19,13 @@ exports.guiaCursos = (req, res) => {
       },
       datos: {
         message: 'Este es el formato JSON a enviar',
-        identificador: 'IdExample',
-        nombre: 'Name Test',
-        descripcion: 'Useful Description',
-        autor: 'Author',
-        link: 'www.mysite.com'
+        json: {
+          identificador: 'IdExample',
+          nombre: 'Name Test',
+          descripcion: 'Useful Description',
+          autor: 'Author',
+          link: 'www.mysite.com'
+        }
       },
       pasos: {
         'get2': 'Para obtener un objeto en especifico se envia su identificador en los parametros',
@@ -44,9 +46,11 @@ exports.guiaNotas = (req, res) => {
       },
       datos: {
         message: 'Este es el formato JSON a enviar',
-        idNota: "123",
-        titulo: "Comprar Pan",
-        descripcion: "Pillar el pan en la tienda de pepita"
+        json: {
+          idNota: "123",
+          titulo: "Comprar Pan",
+          descripcion: "Pillar el pan en la tienda de pepita"
+        }
       },
       pasos: {
         'get2': 'Para obtener una nota en especifico se envia su idNota en los parametros',
