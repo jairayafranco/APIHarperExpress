@@ -1,6 +1,7 @@
 const cursoController = require('../controller/cursoController')
 const mainController = require('../controller/mainController')
 const notasController = require('../controller/notasController')
+const itemsController = require('../controller/itemsController')
 const router = require('express').Router()
 
 //Ruta principal
@@ -21,5 +22,11 @@ router.get('/notas', notasController.getNotas)
       .post('/notas', notasController.addNota)
       .put('/notas/:id', notasController.editNota)
       .delete('/notas/:id', notasController.deleteNota)
+
+//Rutas items
+router.get('/items', itemsController.getItems)
+      .post('/items', itemsController.addItem)
+      .put('/items/:id', itemsController.editItem)
+      .delete('/items/:id', itemsController.deleteItem)
 
 module.exports = router
