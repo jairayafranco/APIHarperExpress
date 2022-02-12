@@ -1,7 +1,7 @@
 const client = require('../db/db_config')
 
 exports.getItems = (req, response) => {
-    client.query('SELECT id, descripcion FROM registro_cursos.items', (err, res) => {
+    client.query('SELECT id, descripcion FROM registro_cursos.items ORDER BY __createdtime__ DESC', (err, res) => {
         if (err) {
             response.status(500).json(err)
         }
